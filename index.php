@@ -44,13 +44,11 @@ echo 'Цена: ' . $basicPrice . 'руб.<br>';
 echo '<br>';
 
 
-$hourlyPrice = $hourly->priceCalculation($basic->AddService(0, 1));
+$hourlyPrice = $hourly->priceCalculation($hourly->AddService(0, 1));
 
 echo getNameClass($hourly) . '(' . $hourly->getKm() . ' км, ' . $hourly->getMinutes() . ' минут)<br>';
-echo 'Дополнительная услуга: ' . $hourly->getDriverStatus() . '<br>';
+echo 'Дополнительная услуга: ' . $hourly->getGpsStatus() . ' ' . $hourly->getDriverStatus() . '<br>';
 echo 'Цена: ' . $hourlyPrice . 'руб.<br>';
-
-var_dump($hourly->getDriverStatus());
 
 echo '<br>';
 
