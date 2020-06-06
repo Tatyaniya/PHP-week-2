@@ -57,17 +57,3 @@ $studentPrice = $student->priceCalculation($student->AddService(20));
 echo getNameClass($student) . '(' . $student->getKm() . ' км, ' . $student->getMinutes() . ' минут)<br>';
 echo 'Дополнительная услуга: ' . $student->getGpsStatus() . ' ' . $student->getDriverStatus() . '<br>';
 echo 'Цена: ' . $studentPrice . 'руб.<br>';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
