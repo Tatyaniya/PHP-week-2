@@ -2,5 +2,5 @@
 
 interface iPriceCalculation
 {
-    public function priceCalculation($km, $minutes, iAddService $service);
+    public function priceCalculation(iAddService $service);
 }

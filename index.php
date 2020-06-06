@@ -7,13 +7,12 @@ require_once 'src/BasicTariff.php';
 require_once 'src/HourlyTariff.php';
 require_once 'src/StudentTariff.php';
 
+$basic = new BasicTariff(10, 20);
+$hourly = new HourlyTariff(60, 123);
+$student = new StudentTariff(20, 25);
 
-
-$basic = new BasicTariff(10, 3);
-$hourly = new HourlyTariff();
-$student = new StudentTariff(4, 1);
-
-function getNameClass($obj) {
+function getNameClass($obj)
+{
     $tariff = [
         [
             'name' => 'Тариф студенческий',
@@ -36,19 +35,30 @@ function getNameClass($obj) {
     }
 }
 
-echo getNameClass($basic) . '(' . $basic->$km . ' км, ' . $basic->$minutes . ' минут)<br>';
-echo 1;
-echo $basic->priceCalculation(5, 6);
-echo '<br>';
+$basicPrice = $basic->priceCalculation($basic->AddService(10, 1));
+
+echo getNameClass($basic) . '(' . $basic->getKm() . ' км, ' . $basic->getMinutes() . ' минут)<br>';
+echo 'Дополнительная услуга: ' . $basic->getGpsStatus() . ', ' . $basic->getDriverStatus() . '<br>';
+echo 'Цена: ' . $basicPrice . 'руб.<br>';
 
 echo '<br>';
-echo $hourly->priceCalculation(10,123, $basic->AddService(123, 1));
+
+
+$hourlyPrice = $hourly->priceCalculation($basic->AddService(0, 1));
+
+echo getNameClass($hourly) . '(' . $hourly->getKm() . ' км, ' . $hourly->getMinutes() . ' минут)<br>';
+echo 'Дополнительная услуга: ' . $hourly->getDriverStatus() . '<br>';
+echo 'Цена: ' . $hourlyPrice . 'руб.<br>';
+
+var_dump($hourly->getDriverStatus());
+
 echo '<br>';
-echo $student->priceCalculation(20, 25);
 
+$studentPrice = $student->priceCalculation($student->AddService(20));
 
-
-
+echo getNameClass($student) . '(' . $student->getKm() . ' км, ' . $student->getMinutes() . ' минут)<br>';
+echo 'Дополнительная услуга: ' . $student->getGpsStatus() . ' ' . $student->getDriverStatus() . '<br>';
+echo 'Цена: ' . $studentPrice . 'руб.<br>';
 
 
 
