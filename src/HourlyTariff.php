@@ -6,7 +6,6 @@ class HourlyTariff extends aTariff
     protected $pricePerMinutes = 200 / 60;
     protected $minutesInHours = 60;
 
-
     public function priceCalculation($serviceFeatures = 0)
     {
         $for60minutes = $this->minutes - $this->minutes % $this->minutesInHours + $this->minutesInHours;
