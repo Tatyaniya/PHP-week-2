@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * почасовый тариф
+ *
+ * Class HourlyTariff
+ */
 class HourlyTariff extends aTariff
 {
     protected $pricePerKm = 0;

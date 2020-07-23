@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * абстрактный класс
+ *
+ * Class aTariff
+ */
 abstract class aTariff implements iPriceCalculation, iAddService
 {
     protected $pricePerKm;
@@ -9,12 +14,24 @@ abstract class aTariff implements iPriceCalculation, iAddService
     protected $gpsStatus;
     protected $driverStatus;
 
+    /**
+     * aTariff constructor.
+     * @param $km
+     * @param $minutes
+     */
     public function __construct($km, $minutes)
     {
         $this->km = $km;
         $this->minutes = $minutes;
     }
 
+    /**
+     * добавляем услугу
+     *
+     * @param int $gps
+     * @param int $addDriver
+     * @return float|int
+     */
     public function AddService($gps = 0, $addDriver = 0)
     {
         if ($gps != 0) {
@@ -27,6 +44,12 @@ abstract class aTariff implements iPriceCalculation, iAddService
         return $serviceFeatures = $hours * 15 + $addDriver * 100;
     }
 
+    /**
+     * считаем стоимость
+     *
+     * @param int $serviceFeatures
+     * @return float|int
+     */
     public function priceCalculation($serviceFeatures = 0)
     {
         return $this->km * $this->pricePerKm + $this->minutes * $this->pricePerMinute + $serviceFeatures;
